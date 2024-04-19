@@ -1,4 +1,4 @@
-package Cindy;
+package Cindy.testSuites;
 
 import PageObject.HomePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -6,10 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-import java.util.concurrent.TimeUnit;
 
 public class Home {
     WebDriver driver;

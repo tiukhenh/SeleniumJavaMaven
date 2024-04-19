@@ -1,4 +1,4 @@
-package Cindy;
+package Cindy.testSuites;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

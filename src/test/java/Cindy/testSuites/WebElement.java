@@ -1,12 +1,10 @@
-package Cindy;
+package Cindy.testSuites;
 
 import PageObject.HomePage;
 import PageObject.WebElementPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -38,7 +36,7 @@ public class WebElement {
         webElementPage.clickOnWebElement();
         assert(webElementPage.getTitleText().contains("Web Elements and Locators"));
     }
-    @Test(enabled = false)
+    @Test
     public  void  testButton(){
         //verify status Button is Enabled
         Boolean status = webElementPage.statusButton1();
@@ -130,7 +128,7 @@ public class WebElement {
 
         webElementPage.resetRegistration();
     }
-    @Test
+    @Test(enabled = false)
     public void waitForElement15s() {
         // Issue can't click element bc it not on the screen
 

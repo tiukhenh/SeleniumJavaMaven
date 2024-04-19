@@ -1,4 +1,4 @@
-package Cindy;
+package Cindy.testSuites;
 
 import PageObject.GolfCoursesPage;
 import PageObject.HomePage;
@@ -85,6 +85,8 @@ public class GolfCourses {
         golfCoursesPage.clickDetailGolfCourses(golfCourseName);
 
         assert(golfCoursesPage.getTitleDetailPage().contains(golfCourseName));
+        // take screen short
+        golfCoursesPage.takeScreenshot(driver,"detail");
     }
     @Test
     public void getNameGolfCourses() {

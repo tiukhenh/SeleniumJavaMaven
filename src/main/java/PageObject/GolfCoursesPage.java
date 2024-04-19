@@ -1,10 +1,10 @@
 package PageObject;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -116,6 +116,21 @@ public class GolfCoursesPage {
         System.arraycopy(arr1, 0, result, 0, arr1.length);
         System.arraycopy(arr2, 0, result, arr1.length, arr2.length);
         return result;
+    }
+    //take Screen short
+    public void takeScreenshot(WebDriver driver, String screenshotName) {
+        try {
+            // Chuyển driver thành TakesScreenshot
+            TakesScreenshot scrShot = ((TakesScreenshot) driver);
+
+            // Chụp ảnh và lưu vào File
+            File screenshotFile = scrShot.getScreenshotAs(OutputType.FILE);
+
+            // Sao chép file ảnh vào thư mục mong muốn
+            FileUtils.copyFile(screenshotFile, new File("./screenshots/" + screenshotName + ".png"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
