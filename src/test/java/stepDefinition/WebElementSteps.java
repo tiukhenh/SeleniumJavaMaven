@@ -10,6 +10,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class WebElementSteps {
     WebDriver driver;
     HomePage homePage;
@@ -17,7 +19,6 @@ public class WebElementSteps {
 
     @Given("Navigate to HomePage")
     public void navigate_to_home_page() {
-        System.out.println("do roi nha1");
         driver = new BaseSetup().setupDriver("chrome");
         homePage = new HomePage(driver);
         webElementPage = new WebElementPage(driver);
@@ -42,6 +43,10 @@ public class WebElementSteps {
         assert(webElementPage.getTitleText().contains("Web Elements and Locators"));
 
     }
-
+    @When("User input {string}")
+    public void user_input(String string) {
+        webElementPage.inputText1(string);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    }
 
 }
