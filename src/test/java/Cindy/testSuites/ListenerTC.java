@@ -1,15 +1,15 @@
 package Cindy.testSuites;
 
 import Cindy.common.BaseSetup;
-import Cindy.common.TestListener;
+import Cindy.listeners.TestListener;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
 import org.testng.SkipException;
 
 @Listeners(TestListener.class)
