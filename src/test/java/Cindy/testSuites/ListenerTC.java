@@ -1,5 +1,6 @@
 package Cindy.testSuites;
 
+import Cindy.common.BaseSetup;
 import Cindy.common.TestListener;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -18,8 +19,7 @@ public class ListenerTC {
 
     @BeforeClass
     public void setupDriver() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        driver = new BaseSetup().setupDriver("chrome");
     }
 
     @Test(priority = 1) //Success Test
