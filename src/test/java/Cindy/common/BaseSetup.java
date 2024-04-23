@@ -1,13 +1,18 @@
 package Cindy.common;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -21,7 +26,20 @@ public class BaseSetup {
     public static WebDriver getDriver() {
         return driver;
     }
+    public static void takeScreenShot(String name) {
+        try {
+            // Ép kiểu WebDriver sang TakesScreenshot
+            TakesScreenshot scrShot = ((TakesScreenshot) driver);
 
+            // Chụp ảnh và lưu vào File
+            File screenshotFile = scrShot.getScreenshotAs(OutputType.FILE);
+
+            // Sao chép file ảnh vào thư mục mong muốn
+            FileUtils.copyFile(screenshotFile, new File("./screenshots/" + name + ".png"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public WebDriver setupDriver(String browserType) {
         switch (browserType.trim().toLowerCase()) {
             case "chrome":

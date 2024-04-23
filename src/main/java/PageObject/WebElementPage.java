@@ -55,6 +55,8 @@ public class WebElementPage {
         driver.findElement(text1).sendKeys(text);
     }
     public Boolean statusButton1() {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(button1));
         return driver.findElement(button1).isEnabled();
     }
     public void clickOnButton1() {
