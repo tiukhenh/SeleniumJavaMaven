@@ -9,6 +9,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 
 public class GolfCoursesSteps {
@@ -31,10 +32,24 @@ public class GolfCoursesSteps {
         assert(golfCoursesPage.getTitlePage().contains("Golf Courses"));
     }
 
-    @When("Input GolfCourses name")
-    public void inputGolfCoursesName() {
-        golfCoursesPage.inputGolfCoursesName(searchedGolfCourseName );
-        golfCoursesPage.clickSearchButton();
+    @When("Input GolfCourses name {string}")
+    public void inputGolfCoursesName(String name) {
+        golfCoursesPage.inputGolfCoursesName(name);
+    }
 
+    @And("Click on search button")
+    public void clickOnSearchButton() {
+        golfCoursesPage.clickSearchButton();
+    }
+
+    @Then("Verify result list contain {string}")
+    public void verifyResultListContain(String name) {
+        String[] result = golfCoursesPage.handleTableResultName();
+
+        for (int i = 0; i < result.length; i++) {
+//            Assert.assertEquals(expectedResult[i], result[i]);
+            System.out.println(result[i]);
+            Assert.assertTrue(golfCoursesPage.arrayContainsString(result, searchedGolfCourseName ));
+        }
     }
 }
