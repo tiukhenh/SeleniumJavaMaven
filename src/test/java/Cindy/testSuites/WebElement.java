@@ -32,7 +32,7 @@ public class WebElement {
         homePage.navigateToHomePage("https://www.admlucid.com");
         assert(homePage.getTitleText().contains("Home Page - Admlucid"));
 
-        webElementPage.clickOnTestsButton();
+        homePage.clickOnTestsButton();
         webElementPage.clickOnWebElement();
         assert(webElementPage.getTitleText().contains("Web Elements and Locators"));
     }

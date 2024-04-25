@@ -13,6 +13,8 @@ public class GolfCoursesPage {
     WebDriver driver;
 
     private By tiltePage = By.tagName("h1");
+    private By golfCoursesloca = By.xpath("//a[@href='/Golf']");
+
     private By inputGCName = By.name("SearchString");
     private By searchButton = By.xpath("//form[@method='post']//button");
 
@@ -37,6 +39,9 @@ public class GolfCoursesPage {
 
     public GolfCoursesPage(WebDriver driver) {
         this.driver = driver;
+    }
+    public void clickOnGolfCourses() {
+        driver.findElement(golfCoursesloca).click();
     }
 
     public String getTitlePage(){

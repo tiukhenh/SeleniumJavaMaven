@@ -40,6 +40,16 @@ public class BaseSetup {
             e.printStackTrace();
         }
     }
+    public static String captureScreenshot(WebDriver driver, String screenshotName) {
+        String screenshotPath = "screenshots/" + screenshotName +".png";
+        File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(screenshotFile, new File(screenshotPath));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return screenshotPath;
+    }
     public WebDriver setupDriver(String browserType) {
         switch (browserType.trim().toLowerCase()) {
             case "chrome":
@@ -66,8 +76,8 @@ public class BaseSetup {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         return driver;
     }
 

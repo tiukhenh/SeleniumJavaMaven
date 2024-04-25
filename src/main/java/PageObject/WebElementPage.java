@@ -12,7 +12,7 @@ public class WebElementPage {
     WebDriver driver;
     //Locators
     private By tiltemessa = By.xpath("//h1");
-    private By testButon = By.xpath("//button[@class='dropbtn' and contains(text(), 'Tests')]");
+
     //    private By webElemntloca = By.xpath("//a[@href='/Home/WebElements']");
     private By webElemntloca = By.linkText("Web_Elements");
     private By text1 = By.id("Text1");
@@ -45,9 +45,7 @@ public class WebElementPage {
         return driver.findElement(tiltemessa).getText();
     }
 
-    public void clickOnTestsButton() {
-        driver.findElement(testButon).click();
-    }
+
     public void clickOnWebElement() {
         driver.findElement(webElemntloca).click();
     }

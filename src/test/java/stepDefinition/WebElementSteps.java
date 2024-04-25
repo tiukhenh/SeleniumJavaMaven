@@ -20,27 +20,16 @@ import java.util.concurrent.TimeUnit;
 
 public class WebElementSteps {
     WebDriver driver;
-    HomePage homePage;
     WebElementPage webElementPage;
 
-    @Given("Navigate to HomePage")
-    public void navigate_to_home_page() {
-        driver = new BaseSetup().setupDriver("chrome");
-        homePage = new HomePage(driver);
+    public WebElementSteps() {
+        driver = commonStepDefinition.driver; // Sử dụng đối tượng WebDriver từ commonStepDefinition
         webElementPage = new WebElementPage(driver);
+    }
 
-        homePage.navigateToHomePage("https://www.admlucid.com");
-    }
-    @Then("Verify navigate to Homepage successful")
-    public void verify_navigate_to_homepage_successful() {
-        assert(homePage.getTitleText().contains("Home Page - Admlucid"));
-    }
-    @When("Click on Test button")
-    public void click_on_test_button() {
-        webElementPage.clickOnTestsButton();
-    }
     @And("Click on WebElement")
     public void click_on_web_element() {
+
         webElementPage.clickOnWebElement();
     }
 
@@ -87,6 +76,8 @@ public class WebElementSteps {
     @When("Screenshot {string}")
     public void screenshot(String name) {
         BaseSetup.takeScreenShot(name);
+//        String screenshotPath =BaseSetup.captureScreenshot(driver, name);
+//        scenario.attach(screenshotPath, "image/png", "Screenshot");
     }
     @AfterTest
     public void tearDownScenario() {
